@@ -1,34 +1,80 @@
-<section id="contato" class="py-20 bg-gray-100 text-gray-800">
-    <div class="max-w-4xl mx-auto px-6 text-center">
-      <h2 class="text-4xl font-bold text-gray-900">Entre em Contato</h2>
-      <p class="mt-4 text-lg text-gray-600">
-        Se tiver interesse em trabalhar comigo ou quiser trocar uma ideia, sinta-se à vontade para me chamar!
-      </p>
-  
-      <!-- Formulário de Contato -->
-      <form class="mt-8 bg-white p-6 rounded-lg shadow-lg">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <input type="text" placeholder="Nome" class="p-3 border rounded-md w-full">
-          <input type="email" placeholder="E-mail" class="p-3 border rounded-md w-full">
+  <!-- Contato -->
+    <section id="contato" class="py-20 bg-gray-100 text-gray-800">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center text-gray-900 mb-4">Entre em Contato</h2>
+            <p class="mt-4 text-center text-lg text-gray-600 max-w-2xl mx-auto">
+                Tem um projeto em mente ou quer conversar sobre oportunidades? Entre em contato!
+            </p>
+            <div class="w-24 h-1 bg-secondary mx-auto mb-12"></div>
+
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-2/5 bg-primary text-white p-8">
+                        <h3 class="text-2xl font-bold mb-6">Vamos conversar!</h3>
+                        <p class="mb-6">Estou sempre aberto a discutir novos projetos, ideias criativas ou oportunidades para fazer parte de sua visão.</p>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="bg-secondary bg-opacity-20 p-3 rounded-full mr-4">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold">E-mail</p>
+                                    <a href="mailto:proverasamuel2022@gmail.com" class="hover:text-secondary transition duration-300">proverasamuel2022&#64;gmail.com</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="bg-secondary bg-opacity-20 p-3 rounded-full mr-4">
+                                    <i class="fab fa-linkedin"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold">LinkedIn</p>
+                                    <a href="https://www.linkedin.com/in/proverá-samuel" target="_blank" class="hover:text-secondary transition duration-300">linkedin.com/in/proverá-samuel</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="bg-secondary bg-opacity-20 p-3 rounded-full mr-4">
+                                    <i class="fab fa-github"></i>
+                                </div>
+                                <div>
+                                    <p class="font-semibold">GitHub</p>
+                                    <a href="https://github.com/Proverasamuel" target="_blank" class="hover:text-secondary transition duration-300">github.com/Proverasamuel</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="md:w-3/5 p-8">
+                        <form id="contact-form" class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="name" class="block text-gray-700 font-medium mb-2">Nome</label>
+                                    <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-gray-700 font-medium mb-2">E-mail</label>
+                                    <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label for="subject" class="block text-gray-700 font-medium mb-2">Assunto</label>
+                                <input type="text" id="subject" name="subject" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            
+                            <div>
+                                <label for="message" class="block text-gray-700 font-medium mb-2">Mensagem</label>
+                                <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-primary text-white font-semibold py-3 px-6 rounded-lg hover:bg-accent transition duration-300 flex items-center justify-center">
+                                <i class="fas fa-paper-plane mr-2"></i> Enviar Mensagem
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        <textarea placeholder="Mensagem" rows="5" class="mt-4 p-3 border rounded-md w-full"></textarea>
-        <button type="submit" class="mt-4 px-6 py-3 bg-[#6CBCE1] text-white font-semibold rounded-md hover:bg-teal-600">
-          Enviar Mensagem
-        </button>
-      </form>
-  
-      <!-- Redes Sociais -->
-      <div class="mt-8 flex justify-center space-x-6">
-        <a href="https://github.com/Proverasamuel" target="_blank" class="text-gray-700 hover:text-teal-500">
-          <i class="fab fa-github text-3xl"></i>
-        </a>
-        <a href="www.linkedin.com/in/proverá-samuel" target="_blank" class="text-gray-700 hover:text-teal-500">
-          <i class="fab fa-linkedin text-3xl"></i>
-        </a>
-        <a href="mailto:proverasamuel2022@gmail.com" class="text-gray-700 hover:text-teal-500">
-          <i class="fas fa-envelope text-3xl"></i>
-        </a>
-      </div>
-    </div>
-  </section>
-  
+    </section>

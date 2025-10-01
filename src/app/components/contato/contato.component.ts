@@ -8,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrl: './contato.component.css'
 })
 export class ContatoComponent {
-
+ /** Tratamento do envio do formulário de contato */
+  onSubmitContactForm(form: any): void {
+    // Lógica futura com EmailJS aqui
+    alert('Obrigado pela mensagem! Entrarei em contato em breve.');
+    form.reset();
+  }
 }
