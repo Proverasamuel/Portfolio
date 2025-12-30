@@ -1,45 +1,101 @@
-  <!-- Projetos -->
-    <section id="projetos" class="py-20 bg-white text-gray-800">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center text-gray-900 mb-4">Meus Projetos</h2>
-            <p class="mt-4 text-center text-lg text-gray-600 max-w-2xl mx-auto">
-                Confira alguns dos projetos em que trabalhei, demonstrando minhas habilidades e experiência.
-            </p>
-            <div class="w-24 h-1 bg-secondary mx-auto mb-12"></div>
+<!-- Projetos -->
+<section id="projetos" class="py-20 bg-white text-gray-800">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 class="text-4xl font-bold text-center text-gray-900 mb-4">Meus Projetos</h2>
+    <p class="mt-4 text-center text-lg text-gray-600 max-w-2xl mx-auto">
+      Confira alguns dos projetos em que trabalhei, demonstrando minhas habilidades e experiência.
+    </p>
+    <div class="w-24 h-1 bg-secondary mx-auto mb-12"></div>
 
-            <!-- Grid de Projetos -->
-           <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-  <ng-container *ngFor="let project of (showAllProjects ? projects : projects | slice:0:3)">
-    <div class="project-card bg-gray-50 rounded-lg overflow-hidden shadow-md border border-gray-200">
-      <div class="h-48 bg-gradient-to-r {{project.gradient}} flex items-center justify-center">
-        <i class="{{project.icon}} text-white text-6xl"></i>
-      </div>
-      <div class="p-6">
-        <h3 class="text-xl font-semibold mb-1">{{project.title}}</h3>
-        <span class="text-sm px-2 py-1 rounded-full"
-              [ngClass]="project.status === 'Concluído' ? 'bg-green-100 text-green-700' :
+    <!-- Grid de Projetos -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <ng-container *ngFor="let project of (showAllProjects ? projects : projects | slice:0:3)">
+        <div class="project-card bg-gray-50 rounded-lg overflow-hidden shadow-md border border-gray-200">
+          <div class="h-48 bg-gradient-to-r {{project.gradient}} flex items-center justify-center">
+            <i class="{{project.icon}} text-white text-6xl"></i>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-semibold mb-1">{{project.title}}</h3>
+            <span class="text-sm px-2 py-1 rounded-full" [ngClass]="project.status === 'Concluído' ? 'bg-green-100 text-green-700' :
                           project.status === 'Em desenvolvimento' ? 'bg-yellow-100 text-yellow-700' :
                           'bg-blue-100 text-blue-700'">
-          {{project.status}}
-        </span>
-        <p class="text-gray-600 mb-4 mt-2">{{project.description}}</p>
-        <div class="flex flex-wrap gap-2 mb-4">
-          <span *ngFor="let tech of project.techs"
+              {{project.status}}
+            </span>
+            <p class="text-gray-600 mb-4 mt-2">{{project.description}}</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span *ngFor="let tech of project.techs"
                 class="bg-primary bg-opacity-10 text-primary text-xs px-3 py-1 rounded-full">
-            {{tech}}
-          </span>
+                {{tech}}
+              </span>
+            </div>
+          <div class="flex gap-3 mt-4">
+  <!-- Ver Projeto (Modal) -->
+  <button
+    (click)="openProject(project)"
+    class="flex-1 py-2 border border-primary text-primary rounded-lg hover:bg-primary hover:text-white transition">
+    Ver Projeto
+  </button>
+
+  <!-- Ver Online (Produção) -->
+  <a
+    *ngIf="project.liveUrl"
+    [href]="project.liveUrl"
+    target="_blank"
+    class="flex-1 py-2 text-center bg-primary text-white rounded-lg hover:opacity-90 transition">
+    Ver Online
+  </a>
+</div>
+
+
+          </div>
         </div>
+      </ng-container>
+    </div>
+
+    <div class="text-center mt-12">
+      <button (click)="showAllProjects = !showAllProjects"
+        class="px-6 py-3 border-2 border-primary text-primary font-semibold rounded-lg hover:bg-primary hover:text-white transition duration-300">
+        {{ showAllProjects ? 'Ver Menos' : 'Ver Todos os Projetos' }}
+      </button>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- MODAL -->
+<div *ngIf="selectedProject"
+  class="fixed inset-0 z-50 bg-black bg-opacity-70 flex items-center justify-center px-4">
+
+  <div class="bg-white max-w-3xl w-full rounded-lg shadow-lg relative">
+
+    <!-- Header -->
+    <div class="flex justify-between items-center p-4 border-b">
+      <h3 class="text-xl font-semibold">{{ selectedProject.title }}</h3>
+      <button (click)="closeProject()" class="text-gray-500 hover:text-red-500">
+        <i class="fas fa-times text-xl"></i>
+      </button>
+    </div>
+
+    <!-- Conteúdo -->
+    <div class="p-4">
+      <img
+        [src]="selectedImage"
+        class="w-full h-80 object-contain rounded-lg mb-4"
+      />
+
+      <!-- Thumbnails -->
+      <div class="flex gap-2 overflow-x-auto">
+        <img
+          *ngFor="let img of selectedProject.images"
+          [src]="img"
+          (click)="selectedImage = img"
+          class="h-20 w-28 object-cover rounded cursor-pointer border-2"
+          [ngClass]="selectedImage === img ? 'border-primary' : 'border-transparent'"
+        />
       </div>
     </div>
-  </ng-container>
-</div>
 
-<div class="text-center mt-12">
-  <button (click)="showAllProjects = !showAllProjects"
-          class="px-6 py-3 border-2 border-primary text-primary font-semibold rounded-lg hover:bg-primary hover:text-white transition duration-300">
-    {{ showAllProjects ? 'Ver Menos' : 'Ver Todos os Projetos' }}
-  </button>
+  </div>
 </div>
-
-        </div>
-    </section>
